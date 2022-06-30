@@ -1,0 +1,16 @@
+uint8_t op_bit_get_sequence(uint32_t data, uint32_t mask)
+{
+    char retVal = 0, retValbit = 1;
+    uint32_t databit = 1;
+
+    for(int i=0; i<32; i++){
+        if (mask&databit){
+            if (data&databit){
+                retVal = retVal|retValbit;
+            }
+            retValbit<<=1;
+        }
+        databit<<=1;
+    }
+    return retVal;
+}
